@@ -1,18 +1,18 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 security:
   jwt:
-    secret: "clave-super-segura-de-minimo-32-caracteres-123456"
+    secret: ${JWT_SECRET:clave-super-segura-de-minimo-32-caracteres-123456}
     expiration-millis: 3600000
 
 spring:
   application:
     name: gafas-api
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/gafasdb
-    username: postgres
-    password: postgres
+    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5432/gafasdb}
+    username: ${SPRING_R2DBC_USERNAME:postgres}
+    password: ${SPRING_R2DBC_PASSWORD:postgres}
 
 logging:
   level:
