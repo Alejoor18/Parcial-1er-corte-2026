@@ -64,6 +64,7 @@ public class SecurityConfig {
                 .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .authorizeExchange(exchanges -> exchanges
+                        .pathMatchers("/health").permitAll()
                         .pathMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "/api/v1/marcas/**").hasAnyRole("ADMIN", "USER")
                         .pathMatchers(HttpMethod.GET, "/api/v1/gafas/**").hasAnyRole("ADMIN", "USER")
